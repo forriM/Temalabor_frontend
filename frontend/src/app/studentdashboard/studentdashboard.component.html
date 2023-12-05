@@ -1,0 +1,35 @@
+<nav>
+    <mat-toolbar style="display: flex; justify-content:space-around;">
+        <a routerLink='personaldata'>
+            <button mat-flat-button  class="btn btn-primary">
+              Személyes adatok
+            </button>
+          </a>
+          <a routerLink='subjects' >
+            <button mat-flat-button class="btn btn-primary">
+              Tárgyak
+            </button>
+          </a>
+          <a routerLink='exams'>
+            <button mat-flat-button class="btn btn-primary">
+              Vizsgák
+            </button>
+          </a>
+          <a routerLink='newsubject' >
+            <button mat-flat-button class="btn btn-primary">
+              Tárgyfelvétel
+            </button>
+          </a>
+          <a routerLink='newexam'>
+            <button mat-flat-button class="btn btn-primary">
+              Vizsgajelentkezés
+            </button>
+          </a>
+          <a>
+            <button mat-flat-button class="btn btn-primary" (click)="logout()">
+              Kijelentkezés
+            </button>
+          </a>
+    </mat-toolbar>
+</nav>
+<router-outlet></router-outlet>

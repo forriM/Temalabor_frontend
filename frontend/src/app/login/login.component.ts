@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {Validator} from '@angular/forms';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Console } from 'console';
+import { Console, error } from 'console';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginResponse } from '../interfaces';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LOCALSTORAGE_TOKEN_KEY, LOCALSTORAGE_TYPE_KEY } from '../app.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,24 +24,44 @@ export class LoginComponent {
     password:FormControl=new FormControl('')
     isProf:FormControl=new FormControl('')
     response:any
-    constructor(private fb:FormBuilder, private http: HttpClient){}
+    constructor(private snackBar:MatSnackBar, 
+      private http: HttpClient, 
+      private router:Router,
+      private authService: AuthService){}
+
+    
      login(){
       let url:string
+      let routerurl:string
       if(this.isProf.value){
-        url="/nyilvantartas/professor/login"
+        url='/auth/login/professor'
+        routerurl='/professor'
       }
       else {
-        url="/nyilvantartas/student/login"
+        url='/auth/login/student'
+        routerurl='/student'
       }
       
-      
-       var response=this.http.post<boolean>(url, {username: this.username.value, password:this.password.value}).subscribe();
-      
-      this.response=response;
-     }
-}
-
-export interface User {
-  username: string;
-  password: string;
+      var body={
+          username: this.username.value,
+          password: this.password.value
+      }
+       this.http.post<LoginResponse>(url, body).subscribe({next: (response) => {
+        console.log(response)
+        localStorage.setItem(LOCALSTORAGE_TOKEN_KEY, response.username);
+        localStorage.setItem(LOCALSTORAGE_TYPE_KEY, response.type);
+        },
+       error: (error) =>{ 
+        this.snackBar.open(
+          'Hibás felhasználónév vagy jelszó', 'Bezárás', {duration: 10000, horizontalPosition: 'center', verticalPosition: 'top'}
+          );
+        },
+       complete: () => {
+        (this.snackBar).open(
+          "Sikeres bejelentkezés", "Bezárás", {duration: 5000, horizontalPosition: 'center', verticalPosition: 'top'}
+        );
+        this.router.navigate([routerurl]);
+       }
+   });     
+  }
 }

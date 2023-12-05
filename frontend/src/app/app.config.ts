@@ -5,7 +5,9 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
+
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(),importProvidersFrom(HttpClientModule),]
+  providers: [provideRouter(routes), provideClientHydration(), importProvidersFrom(HttpClientModule), provideNoopAnimations()]
 };
