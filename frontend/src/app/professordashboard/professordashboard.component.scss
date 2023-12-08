@@ -1,0 +1,22 @@
+a{
+    margin: 0.7rem;
+    width: 15%;
+}
+
+.btn{
+    width: 100%;
+}
+
+
+
+#toolbar{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+#logoutBtn{
+    color: white;
+    background-color: red;
+    border: red;
+}

@@ -53,12 +53,12 @@ export class LoginComponent {
         },
        error: (error) =>{ 
         this.snackBar.open(
-          'Hibás felhasználónév vagy jelszó', 'Bezárás', {duration: 10000, horizontalPosition: 'center', verticalPosition: 'top'}
+          'Hibás felhasználónév vagy jelszó', 'Bezárás', {duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'}
           );
         },
        complete: () => {
         (this.snackBar).open(
-          "Sikeres bejelentkezés", "Bezárás", {duration: 5000, horizontalPosition: 'center', verticalPosition: 'top'}
+          "Sikeres bejelentkezés", "Bezárás", {duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'}
         );
         this.router.navigate([routerurl]);
        }

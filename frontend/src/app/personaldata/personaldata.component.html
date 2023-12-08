@@ -1,1 +1,26 @@
-<p>Itt lesz a form amivel módosíthatók az adatok</p>
+<div style="display: flex; justify-content: center; flex-wrap: wrap; height:100%;">
+    <form class="col-6 p-5">
+        <h1>Adatok szerkesztése</h1>
+        <div class="form-group">
+          <label for="userNameInput">Felhasználónév</label>
+          <input type="text" class="form-control" id="userNameInput" aria-describedby="usernameHelp" placeholder="Felhasználónév" value={{oldUserName}} formControlName="username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Jelszó</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Jelszó" value={{oldPassWord}} formControlName="password">
+        </div>
+        <div class="form-group">
+            <label for="userNameInput">Keresztnév</label>
+            <input type="text" class="form-control" id="userNameInput" aria-describedby="usernameHelp" placeholder="Keresztnév" value={{oldFirstName}} formControlName="firstname">
+        </div>
+        <div class="form-group">
+            <label for="userNameInput">Vezetéknév</label>
+            <input type="text" class="form-control" id="userNameInput" aria-describedby="usernameHelp" placeholder="Vezetéknév" value={{oldLastName}} formControlName="lastname">
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" (click)="save()">Mentés</button>
+          <button type="button" class="btn btn-secondary m-2"(click)="cancel()">Visszavonás</button>
+        </div>
+        
+      </form>
+    </div>

@@ -1,3 +1,19 @@
 .mat-toolbar{
     background-color: white;
+    display: flex;
+    justify-content: center;
+}
+a{
+    margin: 0.7rem;
+    width: 15%;
+}
+.btn{
+    width: 100%;
+}
+
+
+#logoutBtn{
+    color: white;
+    background-color: red;
+    border: red;
 }

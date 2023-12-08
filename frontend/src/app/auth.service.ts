@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from './interfaces';
+import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse, User } from './interfaces';
 import { Observable, tap } from 'rxjs';
 import { LOCALSTORAGE_TOKEN_KEY, LOCALSTORAGE_TYPE_KEY } from './app.component';
 
@@ -41,8 +41,8 @@ export class AuthService {
     );
   }
 
-  register(registerRequest: RegisterRequest, url:string): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(url, registerRequest);
+  register(user: User, url:string): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(url, user);
   }
 
   /*

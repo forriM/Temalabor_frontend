@@ -1,5 +1,5 @@
 <nav>
-    <mat-toolbar style="display: flex; justify-content:space-around;">
+    <mat-toolbar>
         <a routerLink='personaldata'>
             <button mat-flat-button  class="btn btn-primary">
               Személyes adatok
@@ -26,7 +26,7 @@
             </button>
           </a>
           <a>
-            <button mat-flat-button class="btn btn-primary" (click)="logout()">
+            <button mat-flat-button class="btn btn-primary" id="logoutBtn" (click)="logout()">
               Kijelentkezés
             </button>
           </a>
