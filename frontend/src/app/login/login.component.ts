@@ -35,11 +35,11 @@ export class LoginComponent {
       let routerurl:string
       if(this.isProf.value){
         url='/auth/login/professor'
-        routerurl='/professor'
+        routerurl='/professor/personaldata'
       }
       else {
         url='/auth/login/student'
-        routerurl='/student'
+        routerurl='/student/personaldata'
       }
       
       var body={

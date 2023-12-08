@@ -35,7 +35,13 @@ export const routes: Routes = [
         path:'professor', component:ProfessordashboardComponent, canActivate:[AuthGuardProf],
 
         children:[
-            //Ide kerülnek a menü által megjelenített komponensek
+            {
+                path: 'personaldata', component:PersonaldataComponent
+            },
+            
+            {
+                path: 'subjects', component:SubjectsComponent
+            }
         ]
     }
 
