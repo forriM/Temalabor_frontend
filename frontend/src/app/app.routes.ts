@@ -7,6 +7,7 @@ import { ProfessordashboardComponent } from './professordashboard/professordashb
 import { StudentdashboardComponent } from './studentdashboard/studentdashboard.component';
 import { PersonaldataComponent } from './personaldata/personaldata.component';
 import { SubjectsComponent } from './subjects/subjects.component';
+import { ExamsComponent } from './exams/exams.component';
 
 export const routes: Routes = [
     {
@@ -28,6 +29,9 @@ export const routes: Routes = [
             
             {
                 path: 'subjects', component:SubjectsComponent
+            }, 
+            {
+                path: 'exams', component:ExamsComponent
             }
         ]
     },
@@ -38,7 +42,6 @@ export const routes: Routes = [
             {
                 path: 'personaldata', component:PersonaldataComponent
             },
-            
             {
                 path: 'subjects', component:SubjectsComponent
             }
