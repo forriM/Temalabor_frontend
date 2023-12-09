@@ -17,6 +17,6 @@ export const LOCALSTORAGE_TOKEN_KEY = 'nyilvantartas-auth-token';
 export const LOCALSTORAGE_TYPE_KEY= 'nyilvantartas-type';
 
 // specify tokenGetter for the angular jwt package
-export function tokenGetter() {
+export function getUserName() {
   return localStorage.getItem(LOCALSTORAGE_TOKEN_KEY);
 }
