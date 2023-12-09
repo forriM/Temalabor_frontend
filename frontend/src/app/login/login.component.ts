@@ -26,7 +26,7 @@ export class LoginComponent {
     response:any
     constructor(private snackBar:MatSnackBar, 
       private http: HttpClient, 
-      private router:Router,
+      private router: Router,
       private authService: AuthService){}
 
     

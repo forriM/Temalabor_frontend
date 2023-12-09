@@ -3,17 +3,31 @@
     <table mat-table [dataSource]="exams" class="col-8">
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> Id </th>
-            <td mat-cell *matCellDef="let exam"> {{exam.id}} </td>
+            <td mat-cell *matCellDef="let data"> {{data.exam.id}} </td>
           </ng-container>
     
           <ng-container matColumnDef="subjectname">
             <th mat-header-cell *matHeaderCellDef> Tantárgy </th>
-            <td mat-cell *matCellDef="let exam"> {{exam.subjectName}} </td>
+            <td mat-cell *matCellDef="let data"> {{data.exam.subjectName}} </td>
           </ng-container>
     
           <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef> Dátum </th>
-            <td mat-cell *matCellDef="let exam"> {{exam.date}} </td>
+            <td mat-cell *matCellDef="let data"> {{data.exam.date}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="grade">
+            <th mat-header-cell *matHeaderCellDef> Pontszám </th>
+            <td mat-cell *matCellDef="let data"> {{data.grade}}/100</td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef> Leadás </th>
+            <td mat-cell *matCellDef="let data"> 
+              <button mat-mini-fab color="warn" (click)="drop(data.exam)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
           </ng-container>
     
           <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
