@@ -4,9 +4,14 @@ import {MatTableModule} from '@angular/material/table'
 import { getUserName } from '../app.component';
 
 export interface Subject{
-  name:string;
-  midyearpoints:number;
-  grade:number;
+  id:number
+  name:string
+  professorsName:string
+}
+
+export interface Data{
+  subject: Subject
+  midYearPoints: number
 }
 
 @Component({
@@ -17,15 +22,17 @@ export interface Subject{
   styleUrl: './subjects.component.scss'
 })
 export class SubjectsComponent {
-    subjects: Subject[]=[];
+    subjects: Data[]=[];
+    columnsToDisplay=["name", "professorsname", "midyearpoints"]
 
     constructor(private http:HttpClient){
-      this.http.get<Subject[]>('/student/subjects/'+getUserName()).subscribe({
-        next: (next)=> this.subjects=next,
-        error: (error)=> console.log(error),
-        complete: ()=>{
-            console.log(this.subjects)
+      this.http.get<Data[]>('/student/subjects/'+getUserName()).subscribe(
+        data => {
+          console.log(data);
+          this.subjects=data
         }
-      })
+      )
     }
+      
+    
 }
