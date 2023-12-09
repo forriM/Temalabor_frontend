@@ -48,9 +48,12 @@ export class AuthService {
   /*
    Get the user fromt the token payload
    */
-  getLoggedInUser() {
-    //const decodedToken = this.jwtService.decodeToken();
-    //return decodedToken.user;
+  getUserName() {
+    return localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)
+  }
+
+  getUserType(){
+    return localStorage.getItem(LOCALSTORAGE_TYPE_KEY)
   }
 
   logout(){
