@@ -1,0 +1,31 @@
+<div class="tablecontainer">
+    <div class="col-12 col-lg-8">
+    <table mat-table [dataSource]="subjects" class="col-8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let subject"> {{subject.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Név </th>
+            <td mat-cell *matCellDef="let subject"> {{subject.name}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="professorsname">
+            <th mat-header-cell *matHeaderCellDef> Oktató </th>
+            <td mat-cell *matCellDef="let subject"> {{subject.professorsName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="enroll">
+            <th mat-header-cell *matHeaderCellDef>Felvétel</th>
+            <td mat-cell *matCellDef="let subject">         
+                 <button mat-button color="primary" (click)="click(subject)">Jelentkezés</button>
+            </td>
+          </ng-container>
+    
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+          <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+      </table>
+    </div>
+    </div>
+    

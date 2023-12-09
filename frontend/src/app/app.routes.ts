@@ -8,6 +8,8 @@ import { StudentdashboardComponent } from './studentdashboard/studentdashboard.c
 import { PersonaldataComponent } from './personaldata/personaldata.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { ExamsComponent } from './exams/exams.component';
+import { EnrolltoexamComponent } from './enrolltoexam/enrolltoexam.component';
+import { PickupsubjectComponent } from './pickupsubject/pickupsubject.component';
 
 export const routes: Routes = [
     {
@@ -32,6 +34,12 @@ export const routes: Routes = [
             }, 
             {
                 path: 'exams', component:ExamsComponent
+            },
+            {
+                path: 'enrollToExam', component:EnrolltoexamComponent
+            },
+            {
+                path: 'pickUpSubject', component:PickupsubjectComponent
             }
         ]
     },
