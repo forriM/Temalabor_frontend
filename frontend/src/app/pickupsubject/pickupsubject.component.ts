@@ -3,6 +3,8 @@ import {MatTableModule} from '@angular/material/table'
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 export interface Subject{
   id:number
@@ -14,7 +16,7 @@ export interface Subject{
 @Component({
   selector: 'app-pickupsubject',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule],
   templateUrl: './pickupsubject.component.html',
   styleUrl: './pickupsubject.component.scss'
 })

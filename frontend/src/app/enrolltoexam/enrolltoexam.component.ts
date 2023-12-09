@@ -4,6 +4,8 @@ import { MatTableModule } from '@angular/material/table';
 import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 export interface Exam{
   id:number
@@ -15,7 +17,7 @@ export interface Exam{
 @Component({
   selector: 'app-enrolltoexam',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule],
   templateUrl: './enrolltoexam.component.html',
   styleUrl: './enrolltoexam.component.scss'
 })
