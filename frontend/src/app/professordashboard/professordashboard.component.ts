@@ -18,4 +18,8 @@ export class ProfessordashboardComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  addGrade(){
+    this.router.navigate([''])
+  }
 }
