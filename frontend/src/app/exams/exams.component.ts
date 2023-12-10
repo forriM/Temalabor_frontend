@@ -12,11 +12,13 @@ export interface Exam{
   id:number
   subjectName:string
   date:Date
+  maxNumOfStudents:number
 }
 
 export interface Data{
   exam:Exam
   grade:number
+  numberOfStudents:number
 }
 
 @Component({
@@ -31,12 +33,14 @@ export class ExamsComponent {
   exams:Data[]=[];
   columnsToDisplay=["id", "subjectname", "date", "grade", "button"];
   url:string='';
+
   constructor(private http:HttpClient, private auth:AuthService, private snackBar:MatSnackBar){
+    this.setUserBasedParams();
     this.getDatafromBackEnd()
   }
 
   getDatafromBackEnd(){
-    this.http.get<Data[]>('/student/exams/'+this.auth.getUserName()).subscribe(
+    this.http.get<Data[]>(this.url).subscribe(
       data => {
         console.log(data);
         this.exams=data
@@ -44,11 +48,13 @@ export class ExamsComponent {
     )
   }
 
-  seturl(){
+  setUserBasedParams(){
     if(this.auth.getUserType()==="student"){
       this.url='/student/exams/'+this.auth.getUserName()
+      this.columnsToDisplay=["id", "subjectname", "date", "numberofstudents", "grade", "button"]
     } else{
       this.url='/professor/exams/'+this.auth.getUserName()
+      this.columnsToDisplay=["id", "subjectname", "date", "numberofstudents", "button"]
     }
   }
 
@@ -64,7 +70,7 @@ export class ExamsComponent {
         },
        complete: () => {
         (this.snackBar).open(
-          "Sikeres leadtad a vizsgát", "Bezárás", {duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'}
+          "Siker", "Bezárás", {duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'}
         );
           this.getDatafromBackEnd();
       }

@@ -21,6 +21,11 @@
             <td mat-cell *matCellDef="let data"> {{data.grade}}/100</td>
           </ng-container>
 
+          <ng-container matColumnDef="numberofstudents">
+            <th mat-header-cell *matHeaderCellDef> Hallgatók száma </th>
+            <td mat-cell *matCellDef="let data"> {{data.numberOfStudents}}/{{data.exam.maxNumOfStudents}}</td>
+          </ng-container>
+
           <ng-container matColumnDef="button">
             <th mat-header-cell *matHeaderCellDef> Leadás </th>
             <td mat-cell *matCellDef="let data"> 
