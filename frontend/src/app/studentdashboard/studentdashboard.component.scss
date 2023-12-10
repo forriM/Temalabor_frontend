@@ -3,11 +3,13 @@
     display: flex;
     justify-content: center;
 }
-a{
-    margin: 0.7rem;
-    width: 15%;
+
+.mat-toolbar a{
+    display: inline;
+    margin-right: 10px;
 }
-.btn{
+
+.mat-toolbar btn{
     width: 100%;
 }
 

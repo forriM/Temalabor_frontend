@@ -1,33 +1,33 @@
 <nav>
     <mat-toolbar id="toolbar">
         <a routerLink='personaldata'>
-            <button mat-flat-button  class="btn btn-primary">
+            <button mat-raised-button color="primary">
               Személyes adatok
             </button>
           </a>
           <a routerLink='subjects' >
-            <button mat-flat-button class="btn btn-primary">
+            <button mat-raised-button color="primary">
               Tárgyak
             </button>
           </a>
           <a routerLink='exams'>
-            <button mat-flat-button class="btn btn-primary">
+            <button mat-raised-button color="primary">
               Vizsgák
             </button>
           </a>
           <a routerLink='createExam' >
-            <button mat-flat-button class="btn btn-primary">
+            <button mat-raised-button color="primary">
               Vizsga Létrehozása
             </button>
           </a>
           <a routerLink='addpoints'>
-            <button mat-flat-button class="btn btn-primary">
+            <button mat-raised-button color="primary">
               ZH jegy beírása
             </button>
           </a>
           <a>
-            <button mat-flat-button class="btn btn-primary" id="logoutBtn" (click)="logout()">
-              Kijelentkezés
+            <button mat-icon-button color="primary" id="logoutBtn" (click)="logout()">
+              <mat-icon>exit_to_app</mat-icon>
             </button>
           </a>
     </mat-toolbar>
