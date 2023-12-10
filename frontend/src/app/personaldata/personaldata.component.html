@@ -18,6 +18,18 @@
             <input type="text" class="form-control" id="userNameInput" aria-describedby="usernameHelp" placeholder="Vezetéknév" value={{oldLastName}} formControlName="lastname">
         </div>
         <div>
+          <label>Születési dátum</label>
+          <p>
+          <mat-form-field>
+            <mat-label>Válassz egy dátumot</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="datepicker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </p>
+        </div>
+        <div>
           <button type="button" class="btn btn-primary" (click)="save()">Mentés</button>
           <button type="button" class="btn btn-secondary m-2"(click)="cancel()">Visszavonás</button>
         </div>

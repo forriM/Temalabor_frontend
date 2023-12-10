@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormGroup, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LOCALSTORAGE_TOKEN_KEY, LOCALSTORAGE_TYPE_KEY } from '../app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatDatepicker, MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
 
 export interface Profile {
   id:number
@@ -12,27 +15,30 @@ export interface Profile {
   password:String;
   firstName:number;
   lastName:String;
+  dateOfBirth:Date;
 }
 
 @Component({
   selector: 'app-personaldata',
   standalone: true,
-  imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule],
+  imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './personaldata.component.html',
   styleUrl: './personaldata.component.scss'
 })
 export class PersonaldataComponent {
   oldUserName:String="";
   oldPassWord:String="";
-  oldFirstName:number=0;
+  oldFirstName:number=0; 
   oldLastName:String="";
   id:number=0;
+  oldBirthDate:Date=new Date(2023,1,4);
 
   profileForm = new UntypedFormGroup({
     username: new UntypedFormControl(null, [Validators.maxLength(50)]),
     password: new UntypedFormControl(null, []),
     firstname: new UntypedFormControl(null, []),
-    lastname: new UntypedFormControl(null, [])
+    lastname: new UntypedFormControl(null, []),
+    datepicker: new FormControl()
   },)
 
   url:string='';
@@ -75,12 +81,14 @@ export class PersonaldataComponent {
     username: this.oldUserName,
     password: this.oldPassWord,
     firstname: this.oldFirstName,
-    lastname: this.oldLastName
+    lastname: this.oldLastName, 
+    datepicker: this.oldBirthDate
     })
-    this.profileForm.value.username=this.oldUserName;
+    /*this.profileForm.value.username=this.oldUserName;
     this.profileForm.value.password=this.oldPassWord;
     this.profileForm.value.firstname=this.oldFirstName;
-    this.profileForm.value.lastname=this.oldUserName;
+    this.profileForm.value.lastname=this.oldLastName;
+    this.profileForm.value.datepicker=this.oldBirthDate;*/
   }
   
   save(){
@@ -93,6 +101,7 @@ export class PersonaldataComponent {
       password:this.profileForm.value.password!=null ? this.profileForm.value.password : this.oldPassWord,
       firstName:this.profileForm.value.firstname !=null ? this.profileForm.value.firstname : this.oldFirstName,
       lastName:this.profileForm.value.lastname !=null ? this.profileForm.value.lastname : this.oldLastName,
+      dateOfBirth:this.profileForm.value.datepicker !=null ? this.profileForm.value.datepicker : this.oldBirthDate,
     }
   console.log(profileData);
    this.http.post<Profile>(this.url, profileData).subscribe( {
