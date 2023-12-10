@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {MatTableModule} from '@angular/material/table'
 import { getUserName } from '../app.component';
+import { AuthService } from '../auth.service';
 
 export interface Subject{
   id:number
@@ -12,6 +13,7 @@ export interface Subject{
 export interface Data{
   subject: Subject
   midYearPoints: number
+  numberOfStudents: number
 }
 
 @Component({
@@ -23,16 +25,30 @@ export interface Data{
 })
 export class SubjectsComponent {
     subjects: Data[]=[];
-    columnsToDisplay=["name", "professorsname", "midyearpoints"]
+    url:string='';
+    columnsToDisplay:string[]=[]
 
-    constructor(private http:HttpClient){
-      this.http.get<Data[]>('/student/subjects/'+getUserName()).subscribe(
+    constructor(private http:HttpClient, private auth:AuthService){
+        this.setUserbasedParams()
+        this.getDatafromBackend();
+    }
+    getDatafromBackend(){
+      this.http.get<Data[]>(this.url).subscribe(
         data => {
           console.log(data);
           this.subjects=data
         }
       )
     }
-      
+
+    setUserbasedParams(){
+      if(this.auth.getUserType()=='student'){
+        this.columnsToDisplay=["id", "name", "professorsname", "midyearpoints"]
+        this.url='/student/subjects/'+getUserName();
+    } else {
+        this.columnsToDisplay=["id", "name", "professorsname", "numberofstudents"]
+        this.url='/professor/subjects/'+getUserName();
+    }
+  }
     
 }
