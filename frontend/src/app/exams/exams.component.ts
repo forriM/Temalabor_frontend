@@ -33,6 +33,7 @@ export class ExamsComponent {
   exams:Data[]=[];
   columnsToDisplay=["id", "subjectname", "date", "grade", "button"];
   url:string='';
+  urlToDelete:string='';
 
   constructor(private http:HttpClient, private auth:AuthService, private snackBar:MatSnackBar){
     this.setUserBasedParams();
@@ -52,9 +53,11 @@ export class ExamsComponent {
     if(this.auth.getUserType()==="student"){
       this.url='/student/exams/'+this.auth.getUserName()
       this.columnsToDisplay=["id", "subjectname", "date", "numberofstudents", "grade", "button"]
+      this.urlToDelete='/student/dropexam/' + this.auth.getUserName()
     } else{
       this.url='/professor/exams/'+this.auth.getUserName()
       this.columnsToDisplay=["id", "subjectname", "date", "numberofstudents", "button"]
+      this.urlToDelete='/professor/deleteExam/' + this.auth.getUserName()
     }
   }
 
@@ -62,7 +65,7 @@ export class ExamsComponent {
     const options={
       params: {'examid': exam.id}
     }
-    this.http.delete("/student/dropexam/"+this.auth.getUserName(),options).subscribe(
+    this.http.delete(this.urlToDelete ,options).subscribe(
       {error: (error) =>{ 
         this.snackBar.open(
           'Hiba történt', 'Bezárás', {duration: 3000, horizontalPosition: 'right', verticalPosition: 'top'}

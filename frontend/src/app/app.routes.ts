@@ -11,7 +11,7 @@ import { ExamsComponent } from './exams/exams.component';
 import { EnrolltoexamComponent } from './enrolltoexam/enrolltoexam.component';
 import { PickupsubjectComponent } from './pickupsubject/pickupsubject.component';
 import { CreateexamComponent } from './createexam/createexam.component';
-//import { AddgradeComponent } from './addgrade/addgrade.component';
+import { AddgradeComponent } from './addgrade/addgrade.component';
 
 
 export const routes: Routes = [
@@ -35,12 +35,15 @@ export const routes: Routes = [
             {
                 path: 'subjects', component:SubjectsComponent
             }, 
+
             {
                 path: 'exams', component:ExamsComponent
             },
+
             {
                 path: 'enrollToExam', component:EnrolltoexamComponent
             },
+
             {
                 path: 'pickUpSubject', component:PickupsubjectComponent
             }
@@ -53,17 +56,21 @@ export const routes: Routes = [
             {
                 path: 'personaldata', component:PersonaldataComponent
             },
+
             {
                 path: 'subjects', component:SubjectsComponent
             },
+
             {
                 path: 'createExam', component:CreateexamComponent
 			},
+
 			{
                 path: 'exams', component:ExamsComponent
             },
+
             {
-                path: 'addpoints', component:AddgradeComponent
+                path: 'addpoints', component: AddgradeComponent
             }
         ]
     }
