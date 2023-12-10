@@ -13,10 +13,13 @@ export interface Subject{
   name:string
   studentName:string
 }
-
-export interface Data{
-  subject: Subject
-  midYearPoints: number
+export interface Profile {
+  id:number
+  userName:String;
+  password:String;
+  firstName:number;
+  lastName:String;
+  dateOfBirth:Date;
 }
 
 @Component({
@@ -27,15 +30,30 @@ export interface Data{
   styleUrl: './addgrade.component.scss'
 })
 export class AddgradeComponent {
-  subjects: Data[]=[];
-  columnsToDisplay=["name"];
+
+  subjects: Subject[]=[];
+  students: Profile[]=[]
+  columnsToDisplayLeft=["name"];
+  columnsToDisplayRight=["id", "name", "currentpoints", "inputs"];
 
   constructor(private http:HttpClient, private auth:AuthService, private snackBar:MatSnackBar){
-    this.http.get<Data[]>('/professor/subjects/'+getUserName()).subscribe(
+    this.http.get<Subject[]>('/professor/subOfProf/'+getUserName()).subscribe(
       data => {
         console.log(data);
         this.subjects=data
       }
     )
+    this.updateStudentList(this.subjects[0]);
+  }
+
+  updateStudentList(subject: Subject) {
+    console.log(subject);
+    this.http.get<Profile[]>('/professor/subOfProf/'+getUserName()).subscribe(
+      data => {
+        console.log(data);
+        this.students=data
+      }
+    )
+
   }
 }

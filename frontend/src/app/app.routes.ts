@@ -13,7 +13,6 @@ import { PickupsubjectComponent } from './pickupsubject/pickupsubject.component'
 import { CreateexamComponent } from './createexam/createexam.component';
 import { AddgradeComponent } from './addgrade/addgrade.component';
 
-
 export const routes: Routes = [
     {
         path: '', redirectTo: 'login', pathMatch: 'full'
