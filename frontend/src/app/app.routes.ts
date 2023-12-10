@@ -10,6 +10,7 @@ import { SubjectsComponent } from './subjects/subjects.component';
 import { ExamsComponent } from './exams/exams.component';
 import { EnrolltoexamComponent } from './enrolltoexam/enrolltoexam.component';
 import { PickupsubjectComponent } from './pickupsubject/pickupsubject.component';
+import { CreateexamComponent } from './createexam/createexam.component';
 
 export const routes: Routes = [
     {
@@ -52,6 +53,9 @@ export const routes: Routes = [
             },
             {
                 path: 'subjects', component:SubjectsComponent
+            },
+            {
+                path: 'createExam', component:CreateexamComponent
             }
         ]
     }
