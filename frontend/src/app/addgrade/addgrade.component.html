@@ -1,12 +1,43 @@
-<div class="tablecontainer">
-    <div class="col-12 col-lg-8">
-    <table mat-table [dataSource]="subjects" class="col-8">
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Név </th>
-          </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
-      </table>
-    </div>
+<div class="row">
+  <div class="tablecontainer col-3">
+      <div>
+        <h4>Tárgyak</h4>
+      <table mat-table [dataSource]="subjects">
+          <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Név </th>
+              <td mat-cell *matCellDef="let subject"> {{subject.name}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplayLeft"></tr>
+          <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplayLeft" (click)="updateStudentList(myRowData)"></tr>
+        </table>
+      </div>
+  </div>
+  <div class="col-7">
+    <div>
+      <h4>Hallgatók</h4>
+      <table mat-table [dataSource]="students">
+          <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> Id </th>
+              <td mat-cell *matCellDef="let data"> {{data.exam.date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Név </th>
+            </ng-container>
+
+            <ng-container matColumnDef="currentpoints">
+              <th mat-header-cell *matHeaderCellDef> Pontszám </th>
+            </ng-container>
+
+            <ng-container matColumnDef="inputs">
+              <th mat-header-cell *matHeaderCellDef>Adott pontszám</th>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplayRight"></tr>
+            <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplayRight"></tr>
+        </table>
+      </div>
+  </div>
 </div>
