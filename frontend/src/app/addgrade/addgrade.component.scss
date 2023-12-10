@@ -1,3 +1,12 @@
 .mat-mdc-row:hover .mat-mdc-cell {
     background-color: lightgray;
   }
+
+  .row{
+    display: flex;
+    justify-content: center;
+  }
+
+mat-form-field{
+    size: 70%;
+}

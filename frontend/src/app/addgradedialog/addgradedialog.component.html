@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Adja meg a pontszámot</h2>
+<mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Pontszám</mat-label>
+            <input matInput formControlName="score">
+          </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button (click)="close()">Vissza</button>
+    <button mat-raised-button color="primary" (click)="save()">Mentés</button>
+</mat-dialog-actions>
+
