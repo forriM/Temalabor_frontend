@@ -1,0 +1,12 @@
+<div class="tablecontainer">
+    <div class="col-12 col-lg-8">
+    <table mat-table [dataSource]="subjects" class="col-8">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Név </th>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+      </table>
+    </div>
+</div>
