@@ -19,7 +19,6 @@ export class AddgradedialogComponent {
   },)
 
   constructor(private dialogRef: MatDialogRef<AddgradedialogComponent>){
-
   }
 
   close(){

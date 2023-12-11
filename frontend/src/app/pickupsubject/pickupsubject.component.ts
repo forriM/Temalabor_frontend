@@ -23,7 +23,6 @@ export interface Subject{
 export class PickupsubjectComponent {
   subjects: Subject[]=[];
   columnsToDisplay=["id", "name", "professorsname", "enroll"]
-  //url:string = '';
 
   constructor(private http:HttpClient, private auth:AuthService, private snackBar:MatSnackBar){
     this.http.get<Subject[]>('/student/subjects').subscribe(

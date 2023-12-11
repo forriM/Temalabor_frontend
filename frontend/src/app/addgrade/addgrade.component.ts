@@ -54,7 +54,6 @@ export class AddgradeComponent {
         this.subjects=data
       }
     )
-    //this.updateStudentList(this.subjects[0]);
   }
 
   updateStudentList(subject: Subject) {
@@ -69,7 +68,6 @@ export class AddgradeComponent {
         this.students=data
       }
     )
-
   }
 
   save(student:Profile){
@@ -95,8 +93,7 @@ export class AddgradeComponent {
             "Sikeres Jegybeírás", "Bezárás", {duration: 5000, horizontalPosition: 'center', verticalPosition: 'top'}
           );
         }
-    })
-      
+    }) 
     })
 
   }

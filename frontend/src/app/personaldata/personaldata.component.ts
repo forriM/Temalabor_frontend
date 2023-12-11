@@ -84,11 +84,6 @@ export class PersonaldataComponent {
     lastname: this.oldLastName, 
     datepicker: this.oldBirthDate
     })
-    /*this.profileForm.value.username=this.oldUserName;
-    this.profileForm.value.password=this.oldPassWord;
-    this.profileForm.value.firstname=this.oldFirstName;
-    this.profileForm.value.lastname=this.oldLastName;
-    this.profileForm.value.datepicker=this.oldBirthDate;*/
   }
   
   save(){
