@@ -52,8 +52,10 @@ export class AddgradeComponent {
       data => {
         console.log(data);
         this.subjects=data
+        this.updateStudentList(this.subjects[0]);
       }
     )
+    
   }
 
   updateStudentList(subject: Subject) {
@@ -75,17 +77,20 @@ export class AddgradeComponent {
     var points:number=0;
     dialogref.afterClosed().subscribe(data=>{
       points=data;
-      console.log(points)
+      console.log(data);
       const request: AddPointsRequest={
         subjectId:this.selectedSubjectId,
         studentId:student.id,
         grade:points
       }
+      if (data===undefined) {
+        return;
+      }
       this.http.post("/professor/points/addpoints", request).subscribe({
         next: (response) => console.log(response),
         error: (error) =>{ 
           this.snackBar.open(
-          error.message, 'Bezárás', {duration: 10000, horizontalPosition: 'center', verticalPosition: 'top'}
+          "Sikertelen jegybeírás", 'Bezárás', {duration: 10000, horizontalPosition: 'center', verticalPosition: 'top'}
           );
         },
         complete: () => {

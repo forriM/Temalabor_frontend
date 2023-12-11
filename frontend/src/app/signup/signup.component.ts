@@ -37,7 +37,7 @@ export class SignupComponent {
     this.authService.register(body, url).subscribe({
       next: (response) => console.log(response),
       error: (error) => (this.snackBar).open(
-        error.error.message, 'Bezárás', {duration: 10000, horizontalPosition: 'right', verticalPosition: 'top'}
+        "Valamilyen hiba történt", 'Bezárás', {duration: 10000, horizontalPosition: 'right', verticalPosition: 'top'}
         ),
       complete: () => {
         (this.snackBar).open(

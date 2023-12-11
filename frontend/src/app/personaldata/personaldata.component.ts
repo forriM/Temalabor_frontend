@@ -103,7 +103,7 @@ export class PersonaldataComponent {
     next: (response) => console.log(response),
       error: (error) =>{ 
         this.snackBar.open(
-        error.message, 'Bezárás', {duration: 10000, horizontalPosition: 'center', verticalPosition: 'top'}
+        "Valamilyen hiba történt", 'Bezárás', {duration: 10000, horizontalPosition: 'center', verticalPosition: 'top'}
         );
       },
       complete: () => {
